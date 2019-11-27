@@ -1,0 +1,114 @@
+@startuml
+
+
+
+
+
+/' Objects '/
+
+class Coordinate {
+	+Coordinate()
+	+operator==(Coordinate const& coord) : bool
+	+x : uint8_t
+	+y : uint8_t
+}
+
+
+class Game {
+	+Game()
+	-currentPlayer : Color
+	-currentState : State
+	-eliminatedPieces : std::stack<std::unique_ptr<Piece> >
+	+MovePiece(Coordinate src, Coordinate dest) : void
+	+Set() : void
+	+ShowState() : void
+	+SwitchState() : void
+}
+
+
+class Move {
+	+Move(Coordinate src, Coordinate des)
+	+des : Coordinate
+	+src : Coordinate
+	+operator==(Coordinate const& coord) : bool
+}
+
+
+class Piece {
+	+Piece(Color color, Role role)
+	-color : Color
+	+GetLocation() : Coordinate
+	-coord : Coordinate
+	+GetRole() : Role
+	-role : Role
+	+GetColor() : char*
+	+GetMoves() : std::array<Move>
+	+GetValue() : uint8_t
+	+ChangePosition(Coordinate dest) : void
+}
+
+
+class Role {
+	+Role(Rank rank)
+	-rank : Rank
+	+IsMoveValid(Move move) : bool
+	+GetRank() : char*
+}
+
+
+class State {
+	+State()
+	+IsCheck(Color player) : bool
+	-board : std::array<std::array<Piece, 8>, 8>
+	+GetCount(Color color) : uint8_t
+}
+
+
+enum Color {
+	BLACK
+	WHITE
+}
+
+
+enum Rank {
+	BISHOP
+	KING
+	KNIGHT
+	PAWN
+	QUEEN
+	ROOK
+}
+
+
+
+
+
+/' Inheritance relationships '/
+
+
+
+
+/' Aggregation relationships '/
+
+Game *-- Piece
+
+
+Game *-- State
+
+
+Move "2" *-- Coordinate
+
+
+Piece *-- Coordinate
+
+
+Piece *-- Role
+
+
+State *-- Piece
+
+
+
+
+
+@enduml
