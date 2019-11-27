@@ -1,6 +1,8 @@
 @startuml
 
 
+title "Title here"
+skinparam linetype ortho
 
 
 

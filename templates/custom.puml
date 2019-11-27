@@ -1,0 +1,6 @@
+{% extends 'default.puml' %}
+
+{% block preamble %}
+title "Title here"
+skinparam linetype ortho
+{% endblock %}
