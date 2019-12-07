@@ -7,5 +7,5 @@ Uses <a href="http://plantuml.com/" target="_blank">PlantUML</a>, <a href="https
 <ol>
 	<li>Put .hpp files in headers directory</li>
 	<li>Run liveserver.html in VSC's Live Server.</li>
-	<li>Execeute run.bat</li>
+	<li>Execute run.bat</li>
 </ol>
